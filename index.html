@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chúc mừng 20/10 💐</title>
+<title>💐 Chúc mừng 20/10 – Lớp Điều dưỡng K21 💐</title>
 <style>
   body {
     margin: 0;
@@ -51,6 +51,12 @@
     border-radius: 15px;
     margin-bottom: 15px;
     box-shadow: 0 5px 20px rgba(255, 105, 180, 0.2);
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
   }
 
   .heart {
@@ -65,7 +71,7 @@
     50% { transform: scale(1.2); }
   }
 
-  /* Cánh hoa rơi */
+  /* Hoa rơi */
   .petal {
     position: fixed;
     width: 15px;
@@ -80,11 +86,6 @@
     0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
     100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
   }
-
-  .note {
-    font-size: 14px;
-    color: #777;
-  }
 </style>
 </head>
 <body>
@@ -92,27 +93,26 @@
 <div class="card">
   <h1>💐 Chúc mừng 20/10 💐</h1>
 
-  <!-- Ảnh lớp -->
+  <!-- 🌸 Ảnh lớp -->
   <img src="0911bc2a-0636-406a-86ea-d14556dc2763.jpg" alt="Lớp Điều dưỡng K21">
 
+  <!-- 🌸 Lời chúc -->
   <p>
     <strong>Chúc các bạn nữ Lớp Điều dưỡng K21</strong><br>
     luôn xinh đẹp, tự tin và toả sáng<br>
     như màu áo của chúng ta nhé! ✨
   </p>
 
-  <!-- Trái tim bật nhạc -->
-  <div class="heart" id="play-heart">❤️</div>
-  <p class="note">— Gửi lời yêu thương từ các bạn nam K21 💖</p>
+  <!-- 💖 Trái tim -->
+  <div class="heart" id="heart">❤️</div>
+  <p style="font-size:14px;color:#777;">— Gửi lời yêu thương từ các bạn nam K21 💖</p>
 </div>
 
-<!-- Nhạc nền -->
-<audio id="bg-music" autoplay loop muted>
-  <source src="Shake It Off.mp3" type="audio/mp3">
-</audio>
+<!-- 🎵 Nhạc nền -->
+<audio id="bg-music" src="Perfect.mp3"></audio>
 
 <script>
-  // Hiệu ứng hoa rơi
+  // 💐 Hoa rơi
   function createPetal() {
     const petal = document.createElement("div");
     petal.classList.add("petal");
@@ -124,14 +124,17 @@
   }
   setInterval(createPetal, 200);
 
-  // Bật nhạc khi người dùng click
+  // 💖 Click tim để phát nhạc
+  const heart = document.getElementById("heart");
   const music = document.getElementById("bg-music");
-  const heart = document.getElementById("play-heart");
-
   heart.addEventListener("click", () => {
-    music.muted = false;
-    music.play();
-    heart.textContent = "💖"; // đổi trái tim sau khi bấm
+    if (music.paused) {
+      music.play();
+      heart.textContent = "💗";
+    } else {
+      music.pause();
+      heart.textContent = "❤️";
+    }
   });
 </script>
 
