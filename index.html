@@ -57,6 +57,7 @@
     color: #ff4da6;
     font-size: 40px;
     animation: beat 1s infinite;
+    cursor: pointer;
   }
 
   @keyframes beat {
@@ -79,6 +80,13 @@
     0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
     100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
   }
+
+  /* Gợi ý nhỏ */
+  .hint {
+    font-size: 14px;
+    color: #888;
+    margin-top: 10px;
+  }
 </style>
 </head>
 <body>
@@ -86,7 +94,7 @@
 <div class="card">
   <h1>💐 Chúc mừng 20/10 💐</h1>
 
-<img src="0911bc2a-0636-406a-86ea-d14556dc2763.jpg" alt="Lớp Điều dưỡng K21">
+  <img src="0911bc2a-0636-406a-86ea-d14556dc2763.jpg" alt="Lớp Điều dưỡng K21">
 
   <p>
     <strong>Chúc các bạn nữ Lớp Điều dưỡng K21</strong><br>
@@ -94,9 +102,15 @@
     như màu áo của chúng ta nhé! ✨
   </p>
 
-  <div class="heart">❤️</div>
+  <div class="heart" id="heart">❤️</div>
   <p style="font-size:14px;color:#777;">— Gửi lời yêu thương từ các bạn nam K21 💖</p>
+  <p class="hint">Nhấn vào trái tim để nghe nhạc 🎵</p>
 </div>
+
+<!-- Thêm nhạc nền -->
+<audio id="bg-music" loop>
+  <source src="Shake It Off.mp3" type="audio/mp3">
+</audio>
 
 <script>
   // Hiệu ứng hoa rơi
@@ -110,8 +124,15 @@
     setTimeout(() => petal.remove(), 7000);
   }
   setInterval(createPetal, 200);
+
+  // Phát nhạc khi bấm vào tim
+  const heart = document.getElementById('heart');
+  const music = document.getElementById('bg-music');
+  heart.addEventListener('click', () => {
+    music.play();
+    heart.style.color = "#ff0066";
+  });
 </script>
 
 </body>
 </html>
-
